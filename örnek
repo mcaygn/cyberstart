@@ -1,0 +1,28 @@
+import math
+
+def euclideanDistance(nokta1, nokta2):
+    x1, y1 = nokta1
+    x2, y2 = nokta2
+    return math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2)
+
+def calculate_min_distance(noktalar):
+    min_mesafe = float("inf")
+    for i, nokta1 in enumerate(noktalar):
+        for j, nokta2 in enumerate(noktalar):
+            if i != j:
+                mesafe = euclideanDistance(nokta1, nokta2)
+                min_mesafe = min(min_mesafe, mesafe)
+    return min_mesafe
+
+def calculate_and_print_min_distance_for_each_point(noktalar):
+    for i, nokta1 in enumerate(noktalar):
+        min_mesafe = float("inf")
+        for j, nokta2 in enumerate(noktalar):
+            if i != j:
+                mesafe = euclideanDistance(nokta1, nokta2)
+                min_mesafe = min(min_mesafe, mesafe)
+        print(f"Nokta {nokta1} için Min Mesafe: {min_mesafe}")
+
+noktalar = [(5, 6), (7, 8), (8, 9), (10, 11)]
+
+calculate_and_print_min_distance_for_each_point(noktalar)
